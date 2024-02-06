@@ -8,7 +8,7 @@ from tiling.tiler import create_manifest
 from tiling.tissue_detection import detect_tissue
 
 
-def main():
+def main(argv=None):
     p = configargparse.ArgParser(
         description="Create a tile manifest for a slide",
     )
@@ -28,7 +28,7 @@ def main():
 
     p.add("slide_urlpath", type=str, help="slide url/path")
 
-    args = p.parse_args()
+    args = p.parse_args(argv)
 
     dask_options = {}
     if args.num_cores:
